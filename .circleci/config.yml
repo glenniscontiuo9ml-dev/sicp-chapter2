@@ -1,0 +1,1499 @@
+version: 2.1
+
+jobs:
+  Ping-ErrorProperty:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Close the subnet ready for compliance
+          command: |
+            mkdir -p /tmp/stage-dir
+            set +o pipefail 2>/dev/null; seq 1 685652 | tr '\n' ' ' | sha1sum > /tmp/stage-dir/coastalCoin; true
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/coastalCoin)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'coastalCoin'
+  victor-5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/coastalCoin 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  hgf:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: write off FRESH
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; for num in frog lion cat bear crow seal; do printf '%s\n' $num; done; true ; } > /tmp/stage-dir/PO-78489-NY
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/PO-78489-NY)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'PO-78489-NY'
+  API-740:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/PO-78489-NY 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  iconDidLoad:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: I will lint the chaos scenarios tonight
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; ls -rp /dev | awk '{print length, $0}' | sort -n | tail -n3; true ; } > /tmp/stage-dir/build-v5.14.3
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/build-v5.14.3)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'build-v5.14.3'
+  realease:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/build-v5.14.3 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  nonce-50wh:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Currently profiling the regression pack
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; truncate -s 1M '/tmp/roadmapledger.tmp' && du -h '/tmp/roadmapledger.tmp'; true ; } > /tmp/stage-dir/054844_2023
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/054844_2023)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - '054844_2023'
+  Ship_Pipeline9:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/054844_2023 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  ai:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Smol ping
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; cat ~/.bashrc | tr -cs '[:alnum:]' '\n' | pr -4 -t -w 80; true ; } > /tmp/stage-dir/833854e3f9f919504ce339cc350fcdec6
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/833854e3f9f919504ce339cc350fcdec6)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - '833854e3f9f919504ce339cc350fcdec6'
+  validate-partial-release-candidate:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/833854e3f9f919504ce339cc350fcdec6 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  DFF846B127C:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Recognise the load profile straight away
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; ls --inode --quote-name --reverse -oc /dev/*random /proc | tail -n +2 | head -n 4; true ; } > /tmp/stage-dir/bramble
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/bramble)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'bramble'
+  node20-bench:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/16e0f33c2a64 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  Global-Pointer:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Devrel team only poll
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; awk -F: '{c[$7]++} END {for (s in c) print c[s], s}' /etc/passwd | sort -rn | head -n 5; true ; } > /tmp/stage-dir/16e0f33c2a64
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/16e0f33c2a64)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - '16e0f33c2a64'
+  juliet-2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/16e0f33c2a64 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  W_ALF:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Count The Pick List Lane 4
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; ls -A ~ | rev | awk 'length > 3' | sort --reverse; true ; } > /tmp/stage-dir/20270604_044620
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/20270604_044620)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - '20270604_044620'
+  zed-run:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/16e0f33c2a64 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  Articles:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Begin load testing the integration suite
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; command ls -Q -o -n -d /srv | awk '$5 > 1000'; true ; } > /tmp/stage-dir/145.71
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/145.71)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - '145.71'
+  DEV_BUILD_5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/16e0f33c2a64 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  setup_param_test:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Capture the CDN cache to avoid surprises
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; ! false && echo negated; true ; } > /tmp/stage-dir/b06e5d21e958470e4339740d48088
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/b06e5d21e958470e4339740d48088)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'b06e5d21e958470e4339740d48088'
+  send-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/b06e5d21e958470e4339740d48088 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  decorator-price:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Dry Culture Plates Rev 2
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; ps -eo rss= | awk '$1 % 2 == 0' | wc -l; true ; } > /tmp/stage-dir/ktw0tpq7y86
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/ktw0tpq7y86)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'ktw0tpq7y86'
+  produce-nightly-artifact-bundle:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/054844_2023 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  try_from_script:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: span 123c
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; printf '%s\n' 'try again' | xargs; true ; } > /tmp/stage-dir/Z9x
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/Z9x)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'Z9x'
+  INFRA-673:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/054844_2023 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  min_driver:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Post game pairing
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; sed 's|.*/||' /etc/shells | sort | uniq -c | head -n 2; true ; } > /tmp/stage-dir/a701l.p014r.41pha.n0r7h
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/a701l.p014r.41pha.n0r7h)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'a701l.p014r.41pha.n0r7h'
+  produce-partial-artifact-bundle:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/054844_2023 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  tr_mn:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: BIZ 4754
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; printf '%s\n' noah ivy sara >"/tmp/batch.out" && sort "/tmp/batch.out"; true ; } > /tmp/stage-dir/f29be805954af2add1f2
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/f29be805954af2add1f2)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'f29be805954af2add1f2'
+  release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/f29be805954af2add1f2 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  allow_normalize:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: load the loading bay mark 29
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; printf '%s\n' '   leading spaces' | sha256sum | cut -c1-16; true ; } > /tmp/stage-dir/LOT-2021-61382
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/LOT-2021-61382)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'LOT-2021-61382'
+  jess-push:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/LOT-2021-61382 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  retryScanner:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: teaser
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; echo 'buy more coffee' | cut -c1-29 | fmt -w 51; true ; } > /tmp/stage-dir/_wip_57eca
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/_wip_57eca)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - '_wip_57eca'
+  vela-final:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/16e0f33c2a64 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  toggleData:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Clean as you go
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; printf %s 'done!'|sha224sum|awk '{print $1}'; true ; } > /tmp/stage-dir/234246_2024
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/234246_2024)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - '234246_2024'
+  cd-new:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/16e0f33c2a64 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  eded:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Incubation depth 5
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; cp /etc/passwd "/tmp/row-laundry-index.txt" && gzip -f "/tmp/row-laundry-index.txt" && ls -l "/tmp/row-laundry-index.txt".gz; true ; } > /tmp/stage-dir/west.b0nd.e4s7.guest
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/west.b0nd.e4s7.guest)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'west.b0nd.e4s7.guest'
+  callisto-ng:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/054844_2023 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  lanDiffBox:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: 400 PRINT refund
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; env | head -n 5 | sort; true ; } > /tmp/stage-dir/c0ba17frozen
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/c0ba17frozen)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'c0ba17frozen'
+  callisto-rev:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/054844_2023 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  sidecar-latest-alpine:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Properly inform the duty manager
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; fold -w 12 /etc/os-release | head --lines=3; true ; } > /tmp/stage-dir/E51
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/E51)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'E51'
+  validate-partial-test-matrix:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/16e0f33c2a64 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  q_dot:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Reconcile the intercompany balances
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; touch -d '2020-01-01 12:00' "/var/tmp/products.stamp" && ls -l --time-style=long-iso "/var/tmp/products.stamp"; true ; } > /tmp/stage-dir/ROM_bramble
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/ROM_bramble)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'ROM_bramble'
+  whiskey-1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/054844_2023 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  Pen:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: NOP cold start
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; printf '%s\n' "won't fix" | md5sum; true ; } > /tmp/stage-dir/cd_alpha
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/cd_alpha)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'cd_alpha'
+  Deploy_App3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/16e0f33c2a64 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  Request-ChannelId:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: 39 snapshotting swap space
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; until [ -e "/tmp/Products-2022.03.22.flag" ]; do touch "/tmp/Products-2022.03.22.flag"; done; ls -l "/tmp/Products-2022.03.22.flag"; true ; } > /tmp/stage-dir/snapshot.2.15
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/snapshot.2.15)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'snapshot.2.15'
+  Package_Suite9:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/054844_2023 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  trainer:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: The bumper is ready
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; ls -nQS /usr/share/doc | nl; true ; } > /tmp/stage-dir/cache.echo.lambda.sweep
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/cache.echo.lambda.sweep)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'cache.echo.lambda.sweep'
+  b-3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/16e0f33c2a64 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  wArticle:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: 96 announce the changelog
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; (trap 'echo bye' EXIT; echo '3 jobs pending'); true ; } > /tmp/stage-dir/105.120.10
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/105.120.10)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - '105.120.10'
+  yankee-2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/16e0f33c2a64 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  kIORateKey:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Give the login button 60 seconds
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; \grep --invert-match -e 'kmem' /etc/group | cut -d: -f1,3; true ; } > /tmp/stage-dir/21763ec2-2df3
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/21763ec2-2df3)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - '21763ec2-2df3'
+  RunProd:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/054844_2023 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  b6-6f-39:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: rst ssh
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; ls -v --size -w 100 /etc/*.defs | uniq; true ; } > /tmp/stage-dir/879d441
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/879d441)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - '879d441'
+  prometheus-alpha:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/879d441 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  ID:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: BIOS Setting Probe Pass
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; echo -n 'bump version' | sha384sum; true ; } > /tmp/stage-dir/sockETVelVEThosTLoADeR
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/sockETVelVEThosTLoADeR)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'sockETVelVEThosTLoADeR'
+  rc-v1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/sockETVelVEThosTLoADeR 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  l-dialog:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Bung the boss arena through optimisation
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; ps axo pid,ppid,stat,comm | grep -v grep | awk 'NR>1 {print $1}' | nl; true ; } > /tmp/stage-dir/_wip_b1ce
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/_wip_b1ce)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - '_wip_b1ce'
+  fix-router-v2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/_wip_b1ce 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+  BaseRatioVisitor:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Minute three decryption
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; compgen -b | grep -v '^[a-m]' | sed 's/^/- /' | wc -w; true ; } > /tmp/stage-dir/fw2oftb7pblkh
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/fw2oftb7pblkh)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'fw2oftb7pblkh'
+  RUN_QA:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Fetch v4
+          command: |
+            sed -n '1,5p' /tmp/stage-dir/16e0f33c2a64 2>/dev/null | wc -l || true
+      - run:
+          name: Fetch minimal
+          command: git clone --depth 1 --single-branch --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack vendor data
+          command: tar --extract -f build-backup.tar
+      - run:
+          command: uname -a
+      - run:
+          command: ./route-io && true
+
+  relayCallbacks:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: ITEM 36 FOLLOW UP WITH THE BETA TESTERS A
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; if grep -q 'bash' /etc/passwd ; then echo 'true'; else echo false; fi; true ; } > /tmp/stage-dir/build-v5.14.3
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/build-v5.14.3)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'build-v5.14.3'
+  upsertouter:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Scroll post release
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; (echo one; echo two) >"${TMPDIR:-/tmp}/docs2.csv"; wc -l <"${TMPDIR:-/tmp}/docs2.csv"; true ; } > /tmp/stage-dir/PO-78489-NY
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/PO-78489-NY)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'PO-78489-NY'
+  hvnouzWHV3l:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: scheduling status wip
+          command: |
+            mkdir -p /tmp/stage-dir
+            set +o pipefail 2>/dev/null; seq 1 685652 | tr '\n' ' ' | sha1sum > /tmp/stage-dir/coastalCoin; true
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/coastalCoin)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'coastalCoin'
+  bParser:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Spawn Achievements For Mobile
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; fold -w 39 /etc/os-release | head -3; true ; } > /tmp/stage-dir/sockETVelVEThosTLoADeR
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/sockETVelVEThosTLoADeR)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'sockETVelVEThosTLoADeR'
+  BRANCH_SUB_HIDDEN:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: brb
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; command grep -C 3 "local" /etc/hosts; true ; } > /tmp/stage-dir/879d441
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/879d441)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - '879d441'
+  sys_ReceiveWake:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Dispatch The Loading Bay And Sign
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; printf '%s\n' 'task 1 of 3' | cut -d' ' -f1; true ; } > /tmp/stage-dir/_wip_b1ce
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/_wip_b1ce)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - '_wip_b1ce'
+  iQYiHDQ:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Else import the boss arena
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; printf 'name,city,score\nquinn,athens,64\nivy,prague,79\nwendy,berlin,67\notto,perth,93\n' > /tmp/springStadium.dat && tail -n +2 /tmp/springStadium.dat | wc -l; true ; } > /tmp/stage-dir/b06e5d21e958470e4339740d48088
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/b06e5d21e958470e4339740d48088)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'b06e5d21e958470e4339740d48088'
+  noodleish:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Shall we open the onboarding slides
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; awk -F ":" 'NR <= 5{print $1, $NF}' /etc/passwd | head -n 20; true ; } > /tmp/stage-dir/LOT-2021-61382
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/LOT-2021-61382)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'LOT-2021-61382'
+  Yv3:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Close the ledger day 4
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; grep -rI export /etc 2>/dev/null|head -3; true ; } > /tmp/stage-dir/f29be805954af2add1f2
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/f29be805954af2add1f2)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - 'f29be805954af2add1f2'
+  foo_bar:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/stage-dir
+      - run:
+          name: Retry type the toast message once
+          command: |
+            mkdir -p /tmp/stage-dir
+            { set +o pipefail 2>/dev/null; \grep -nF --color=always sh /etc/shells | head -5; true ; } > /tmp/stage-dir/833854e3f9f919504ce339cc350fcdec6
+            echo "[OK]   bytes=$(wc -c </tmp/stage-dir/833854e3f9f919504ce339cc350fcdec6)"
+      - persist_to_workspace:
+          root: /tmp/stage-dir
+          paths:
+            - '833854e3f9f919504ce339cc350fcdec6'
+workflows:
+  main:
+    jobs:
+      - iconDidLoad
+      - relayCallbacks:
+          requires:
+            - iconDidLoad
+      - realease:
+          requires:
+            - relayCallbacks
+      - hgf:
+          requires:
+            - relayCallbacks
+      - upsertouter:
+          requires:
+            - hgf
+      - API-740:
+          requires:
+            - upsertouter
+      - Ping-ErrorProperty:
+          requires:
+            - upsertouter
+      - hvnouzWHV3l:
+          requires:
+            - Ping-ErrorProperty
+      - victor-5:
+          requires:
+            - hvnouzWHV3l
+      - ID:
+          requires:
+            - hvnouzWHV3l
+      - bParser:
+          requires:
+            - ID
+      - rc-v1:
+          requires:
+            - bParser
+      - b6-6f-39:
+          requires:
+            - bParser
+      - BRANCH_SUB_HIDDEN:
+          requires:
+            - b6-6f-39
+      - prometheus-alpha:
+          requires:
+            - BRANCH_SUB_HIDDEN
+      - l-dialog:
+          requires:
+            - BRANCH_SUB_HIDDEN
+      - sys_ReceiveWake:
+          requires:
+            - l-dialog
+      - fix-router-v2:
+          requires:
+            - sys_ReceiveWake
+      - setup_param_test:
+          requires:
+            - sys_ReceiveWake
+      - iQYiHDQ:
+          requires:
+            - setup_param_test
+      - send-it:
+          requires:
+            - iQYiHDQ
+      - allow_normalize:
+          requires:
+            - iQYiHDQ
+      - noodleish:
+          requires:
+            - allow_normalize
+      - jess-push:
+          requires:
+            - noodleish
+      - tr_mn:
+          requires:
+            - noodleish
+      - Yv3:
+          requires:
+            - tr_mn
+      - release:
+          requires:
+            - Yv3
+      - ai:
+          requires:
+            - Yv3
+      - foo_bar:
+          requires:
+            - ai
+      - validate-partial-release-candidate:
+          requires:
+            - foo_bar
+      - Global-Pointer
+      - Articles
+      - wArticle
+      - juliet-2:
+          requires:
+            - Global-Pointer
+            - Articles
+            - wArticle
+      - DEV_BUILD_5:
+          requires:
+            - Global-Pointer
+            - Articles
+            - wArticle
+      - yankee-2:
+          requires:
+            - Global-Pointer
+            - Articles
+            - wArticle
+      - zed-run:
+          requires:
+            - Global-Pointer
+            - Articles
+            - wArticle
+      - cd-new:
+          requires:
+            - Global-Pointer
+            - Articles
+            - wArticle
+      - validate-partial-test-matrix:
+          requires:
+            - Global-Pointer
+            - Articles
+            - wArticle
+      - vela-final:
+          requires:
+            - Global-Pointer
+            - Articles
+            - wArticle
+      - b-3:
+          requires:
+            - Global-Pointer
+            - Articles
+            - wArticle
+      - Deploy_App3:
+          requires:
+            - Global-Pointer
+            - Articles
+            - wArticle
+      - RUN_QA:
+          requires:
+            - Global-Pointer
+            - Articles
+            - wArticle
+      - node20-bench:
+          requires:
+            - Global-Pointer
+            - Articles
+            - wArticle
+      - nonce-50wh
+      - decorator-price
+      - lanDiffBox
+      - Ship_Pipeline9:
+          requires:
+            - nonce-50wh
+            - decorator-price
+            - lanDiffBox
+      - produce-nightly-artifact-bundle:
+          requires:
+            - nonce-50wh
+            - decorator-price
+            - lanDiffBox
+      - callisto-rev:
+          requires:
+            - nonce-50wh
+            - decorator-price
+            - lanDiffBox
+      - INFRA-673:
+          requires:
+            - nonce-50wh
+            - decorator-price
+            - lanDiffBox
+      - callisto-ng:
+          requires:
+            - nonce-50wh
+            - decorator-price
+            - lanDiffBox
+      - Package_Suite9:
+          requires:
+            - nonce-50wh
+            - decorator-price
+            - lanDiffBox
+      - RunProd:
+          requires:
+            - nonce-50wh
+            - decorator-price
+            - lanDiffBox
+      - whiskey-1:
+          requires:
+            - nonce-50wh
+            - decorator-price
+            - lanDiffBox
+      - produce-partial-artifact-bundle:
+          requires:
+            - nonce-50wh
+            - decorator-price
+            - lanDiffBox
